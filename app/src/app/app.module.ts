@@ -11,6 +11,8 @@ import { AppComponent } from "./app.component";
 import { PagesModule } from "./pages/pages.module";
 import { NavbarModule } from "./navigation/navebar.module";
 import { EnterpriseComponent } from "./pages/enterprise/enterprise.component";
+import { ClientService } from "./services/client.service";
+import { EnterpriseService } from "./services/enterprise.service";
 
 @NgModule({
   declarations: [AppComponent, EnterpriseComponent],
@@ -24,7 +26,7 @@ import { EnterpriseComponent } from "./pages/enterprise/enterprise.component";
     NavbarModule,
     PagesModule,
   ],
-  providers: [],
+  providers: [ClientService, EnterpriseService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

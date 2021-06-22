@@ -1,0 +1,6 @@
+O método ngOnInit() do componente client não tinha sido declarado.
+O template navbar tinha sido declarado errado, './navbars.component.html' -> './navbar.component.html'.
+Faltava declarar o EnterpriseComponent como declarations no app.modules.
+Faltava criar a rota para o componte Client
+a porta para requisião estava "http://localhost:3001" o certo é "http://localhost:3000"
+faltava declara os Serviços como provides no módulo principal da aplicação
