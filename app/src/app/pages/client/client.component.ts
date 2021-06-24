@@ -8,35 +8,45 @@ import { ClientService } from "src/app/services/client.service";
 })
 export class ClientComponent implements OnInit {
 
-  caracteres = 'rodolfo';
+  clients = [];
+  caracteres = 'en';
   idClient = '5';
-
+  quantityClients: any;
+  quantityEnterprise: any;
+  quantityProperties: any;
   constructor(
     private clientService: ClientService
   ) {}
   ngOnInit(): void {
-    this.getAllClients();
-    this.getClient();
     this.getTotals();
-    this.getClientId();
-    this.getEnterpriseId();
+    this.getAllClients();
   }
 
   getAllClients() {
     this.clientService.getAll().subscribe(res => {
       console.log(res);
+      this.clients = res.response;
+
     });
   }
 
-  getClient() {
-    this.clientService.getByName(this.caracteres).subscribe(res => {
+  getClient(caracteres) {
+    if (caracteres === '' || caracteres === null){
+      this.getAllClients();
+      return;
+    }
+    console.log(caracteres);
+    this.clientService.getByName(caracteres).subscribe(res => {
       console.log(res);
+      this.clients = res.response;
     });
   }
 
   getTotals() {
     this.clientService.getGeneralTotals().subscribe(res => {
-      console.log(res);
+      this.quantityClients = res.quantity_clients;
+      this.quantityEnterprise = res.quantity_enterprise;
+      this.quantityProperties = res.quantity_properties;
     });
   }
 

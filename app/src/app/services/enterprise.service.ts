@@ -6,7 +6,7 @@ import { environment } from "../../environments/environment";
 export class EnterpriseService {
   private apiUrl = environment.api;
 
-  constructor(private http: HttpClient) {}  
+  constructor(private http: HttpClient) {}
 
   getAll() {}
 

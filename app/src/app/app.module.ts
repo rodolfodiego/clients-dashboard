@@ -10,12 +10,13 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { PagesModule } from "./pages/pages.module";
 import { NavbarModule } from "./navigation/navebar.module";
-import { EnterpriseComponent } from "./pages/enterprise/enterprise.component";
 import { ClientService } from "./services/client.service";
 import { EnterpriseService } from "./services/enterprise.service";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
-  declarations: [AppComponent, EnterpriseComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,6 +26,9 @@ import { EnterpriseService } from "./services/enterprise.service";
     HttpClientModule,
     NavbarModule,
     PagesModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
   ],
   providers: [ClientService, EnterpriseService],
   bootstrap: [AppComponent],
