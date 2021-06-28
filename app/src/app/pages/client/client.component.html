@@ -1,34 +1,41 @@
-<div class="container">
-  <div >
-    <span><strong>Total de Clientes: {{quantityClients}}</strong></span>
-    <span><strong>Total de empreendimentos: {{quantityEnterprise}}</strong></span>
-    <span><strong>Total de imóveis: {{quantityProperties}}</strong></span>
-  </div>
-  <div >
-    <div>Buscar por nome:</div>
-        <div>
-          <input  (keyup)="getClient($event.target.value)" >
+<div *ngIf="hidenClients"  class="container">
+  <div>
+    <div class="card-totals">
+      <span>Total de Clientes: {{quantityClients}}</span>
+      <span>Total de empreendimentos: {{quantityEnterprise}}</span>
+      <span>Total de imóveis: {{quantityProperties}}</span>
     </div>
-  </div>
-  <div class="card-">
-  <div  *ngFor="let item of clients let i=index">
-    <div >
-      <strong >
-        <span  >Cliente: {{item.name}}</span>
-        <span> Id Cliente: {{item.id}}</span>
-      </strong>
+    <div class="search-client">
+      <span>Buscar: </span>
+      <input (keyup)="getClient($event.target.value)">
     </div>
-
     <div >
-      <img src='https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/1200px-Manchester_City_FC_badge.svg.png' width="200" height="200">
-      <div >
-        <span><strong>quantidade de empreendimentos: {{item.quantity_enterprise}}</strong></span><br>
-        <span><strong>quantidade de imóveis: {{item.quantity_properties}}</strong></span>
-        <div >
-          <button [routerLink]="['/client',item.id]">Detalhes do cliente</button>
+    <div class="card-clients"  *ngFor="let item of clients let i=index">
+      <div class="data-client">
+        <span >Id : {{item.id}}</span>
+        <span >{{item.name}}</span>
+        <span >Empreendimentos: {{item.quantity_enterprise}}</span>
+        <span *ngIf="test" >Imóveis: {{item.quantity_properties}}</span>
+        <div *ngIf="!test">
+          <table class="table">
+            <tr>
+                <td><strong>Cliente:</strong></td>
+                <td><strong> Qnt. imóveis:</strong></td>
+            <tr *ngFor="let enterprise of item.clients">
+                <td>{{enterprise.name}}</td>
+                <td>{{enterprise.quantity_properties}}</td>
+            </tr>
+          </table>
         </div>
+        <button class="btn-more-details" (click)="showMoreDetails()"  [routerLink]="['/client',item.id]">Mais detalhes</button>
+      </div>
+      <div class="image">
+        {{item.image}}
+        <img  src = item.image>
       </div>
     </div>
-  </div>
+    </div>
   </div>
 </div>
+<div *ngIf="spinner" class="spinner"></div>
+<router-outlet></router-outlet>

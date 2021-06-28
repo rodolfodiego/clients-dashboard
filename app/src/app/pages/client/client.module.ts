@@ -9,10 +9,8 @@ import { ClientDetailsComponent } from '../client-details/client-details.compone
 
 export const ClientRoutes: Routes = [
   {
-    path: 'client',
-    component: ClientComponent,
-    children: [
-      { path: 'client/:_id', component: ClientDetailsComponent },
+    path: 'client', component: ClientComponent, children: [
+      { path: ':_id', component: ClientDetailsComponent },
     ]
   }
 ];
@@ -23,7 +21,7 @@ export const ClientRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    RouterModule
+    RouterModule.forChild(ClientRoutes)
   ]
 })
 export class ClientModule {}

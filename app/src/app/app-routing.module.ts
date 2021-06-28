@@ -1,24 +1,24 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { NavbarComponent } from "./navigation/navbar.component";
-import { ClientRoutes } from "./pages/client/client.module";
-import { EnterpriseRoutes } from "./pages/enterprise/enterprise.module";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { NavbarComponent } from './navigation/navbar.component';
+import { ClientRoutes } from './pages/client/client.module';
+import { EnterpriseRoutes } from './pages/enterprise/enterprise.module';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: NavbarComponent,
     children: [...EnterpriseRoutes],
   },
   {
-    path: "",
+    path: '',
     component: NavbarComponent,
     children: [...ClientRoutes],
   },
   {
-    path: "",
+    path: '',
     pathMatch: 'full',
-    redirectTo: 'enterprise'
+    redirectTo: 'client'
   },
 ];
 

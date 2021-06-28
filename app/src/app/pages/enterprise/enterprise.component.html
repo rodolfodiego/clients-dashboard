@@ -1,1 +1,23 @@
-<div><span>Enterprise</span></div>
+<div class="class-custumer">
+  <div class="enterprise">
+    <span>Empreendimentos:</span>
+  </div>
+  <div class="search-enterprise">
+    <span>Buscar: </span>
+    <input (keyup)="getEnterprise($event.target.value)">
+  </div>
+</div>
+<div class="cards-enterprises">
+  <div class="card-enterprises"  *ngFor="let item of enterprises" >
+    <div class="data-enterprise">
+      <span >Id: {{item.id}}</span>
+      <span >Empreendimento: {{item.name}}</span>
+      <span >Cliente: {{item.name_client}}</span>
+      <span >Imóveis: {{item.quantity_properties}}</span>
+
+    </div>
+    <div class="image-enterprise">
+      <img src='https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/1200px-Manchester_City_FC_badge.svg.png' >
+    </div>
+  </div>
+</div>

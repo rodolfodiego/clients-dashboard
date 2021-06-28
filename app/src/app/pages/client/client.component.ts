@@ -2,30 +2,37 @@ import { Component, OnInit } from "@angular/core";
 import { ClientService } from "src/app/services/client.service";
 
 @Component({
-  selector: "app-client",
-  templateUrl: "./client.component.html",
-  styleUrls: ["./client.component.scss"],
+  selector: 'app-client',
+  templateUrl: './client.component.html',
+  styleUrls: ['./client.component.scss'],
 })
 export class ClientComponent implements OnInit {
 
+  hidenClients = true;
   clients = [];
   caracteres = 'en';
   idClient = '5';
   quantityClients: any;
   quantityEnterprise: any;
   quantityProperties: any;
+  spinner = false;
+  test = true;
   constructor(
     private clientService: ClientService
   ) {}
   ngOnInit(): void {
     this.getTotals();
     this.getAllClients();
+    this.hidenClients = true;
   }
 
   getAllClients() {
+    this.spinner = true;
+    this.test = true;
     this.clientService.getAll().subscribe(res => {
-      console.log(res);
       this.clients = res.response;
+      console.log(this.clients);
+      this.spinner = false;
 
     });
   }
@@ -35,10 +42,11 @@ export class ClientComponent implements OnInit {
       this.getAllClients();
       return;
     }
-    console.log(caracteres);
+
     this.clientService.getByName(caracteres).subscribe(res => {
-      console.log(res);
+      this.test = false;
       this.clients = res.response;
+      console.log(this.clients);
     });
   }
 
@@ -50,15 +58,7 @@ export class ClientComponent implements OnInit {
     });
   }
 
-  getClientId() {
-    this.clientService.getById(this.idClient).subscribe(res => {
-      console.log(res);
-    });
-  }
-
-  getEnterpriseId() {
-    this.clientService.getTotalsByCompany(this.idClient).subscribe(res => {
-      console.log(res);
-    });
+  showMoreDetails() {
+    this.hidenClients = false;
   }
 }

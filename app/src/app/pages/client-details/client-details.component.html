@@ -1,1 +1,37 @@
-<p>client-details works!</p>
+<div *ngIf="client">
+  <div class="card-totals">
+    <span>Total de empreendimentos: {{quantityEnterprise}}</span>
+    <span>Total de imóveis: {{quantityProperties}}</span>
+  </div>
+  <div class="card-clients" >
+    <div class="data-client">
+      <span class="client">Cliente:</span>
+      <span >{{client.name}}</span>
+      <span >Id : {{client.id}}</span>
+    </div>
+    <div class="image">
+      <img src='https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/1200px-Manchester_City_FC_badge.svg.png' >
+    </div>
+  </div>
+
+  <div class="class-custumer">
+    <div class="enterprise">
+      <span>Empreendimentos do cliente:</span>
+    </div>
+    <div class="search-enterprise">
+      <span>Buscar: </span>
+      <input (keyup)="getEnterprise($event.target.value)">
+    </div>
+  </div>
+  <div class="cards-enterprises">
+    <div class="card-enterprises"  *ngFor="let item of enterprises" >
+      <div class="data-enterprise">
+        <span >{{item.name}}</span>
+        <span >Id : {{item.id}}</span>
+      </div>
+      <div class="image-enterprise">
+        <img src='https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/1200px-Manchester_City_FC_badge.svg.png' >
+      </div>
+    </div>
+  </div>
+</div>
