@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { ClientService } from "src/app/services/client.service";
+import { Component, OnInit } from '@angular/core';
+import { ClientService } from 'src/app/services/client.service';
 
 @Component({
   selector: 'app-client',
@@ -17,6 +17,7 @@ export class ClientComponent implements OnInit {
   quantityProperties: any;
   spinner = false;
   test = true;
+  url = 'assets/enterprise.PNG';
   constructor(
     private clientService: ClientService
   ) {}
@@ -31,7 +32,6 @@ export class ClientComponent implements OnInit {
     this.test = true;
     this.clientService.getAll().subscribe(res => {
       this.clients = res.response;
-      console.log(this.clients);
       this.spinner = false;
 
     });
@@ -46,7 +46,6 @@ export class ClientComponent implements OnInit {
     this.clientService.getByName(caracteres).subscribe(res => {
       this.test = false;
       this.clients = res.response;
-      console.log(this.clients);
     });
   }
 

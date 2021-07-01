@@ -10,7 +10,7 @@
       <span >Id : {{client.id}}</span>
     </div>
     <div class="image">
-      <img src='https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/1200px-Manchester_City_FC_badge.svg.png' >
+      <img [src]="client.image ? client.image: url">
     </div>
   </div>
 
@@ -27,10 +27,10 @@
     <div class="card-enterprises"  *ngFor="let item of enterprises" >
       <div class="data-enterprise">
         <span >{{item.name}}</span>
-        <span >Id : {{item.id}}</span>
+        <span >Id: {{item.id}}</span>
       </div>
       <div class="image-enterprise">
-        <img src='https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/1200px-Manchester_City_FC_badge.svg.png' >
+        <img [src]="item.image ? item.image: url">
       </div>
     </div>
   </div>

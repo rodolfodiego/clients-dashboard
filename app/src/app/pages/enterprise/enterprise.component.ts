@@ -9,6 +9,7 @@ import { EnterpriseService } from 'src/app/services/enterprise.service';
 export class EnterpriseComponent implements OnInit {
 
   enterprises: any;
+  url = 'assets/enterprise.PNG';
   constructor(
     private enterpriservice: EnterpriseService
   ) {}
@@ -20,7 +21,6 @@ export class EnterpriseComponent implements OnInit {
   getAllEnterprises() {
     this.enterpriservice.getAll().subscribe(res => {
       this.enterprises = res.response;
-      console.log(this.enterprises);
     });
   }
   getEnterprise(caracteres) {
@@ -30,7 +30,6 @@ export class EnterpriseComponent implements OnInit {
     }
 
     this.enterpriservice.getByName(caracteres).subscribe(res => {
-      console.log(res);
       this.enterprises = res.response;
     });
   }

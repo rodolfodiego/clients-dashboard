@@ -27,15 +27,13 @@
             </tr>
           </table>
         </div>
-        <button class="btn-more-details" (click)="showMoreDetails()"  [routerLink]="['/client',item.id]">Mais detalhes</button>
+        <button class="btn-more-details" (click)="showMoreDetails()"  [routerLink]="['/detalhescliente',item.id]">Mais detalhes</button>
       </div>
       <div class="image">
-        {{item.image}}
-        <img  src = item.image>
+        <img [src]="item.image ? item.image: url">
       </div>
     </div>
     </div>
   </div>
 </div>
 <div *ngIf="spinner" class="spinner"></div>
-<router-outlet></router-outlet>

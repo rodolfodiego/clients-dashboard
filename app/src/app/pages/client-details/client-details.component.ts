@@ -13,6 +13,7 @@ export class ClientDetailsComponent implements OnInit {
   quantityEnterprise: any;
   quantityProperties: any;
   enterprises: any;
+  url = 'assets/enterprise.PNG';
   constructor(
     private route: ActivatedRoute,
     private clientService: ClientService
@@ -48,7 +49,6 @@ export class ClientDetailsComponent implements OnInit {
     }
 
     this.clientService.getEnterpriseByName(caracteres, this.id).subscribe(res => {
-      console.log(res);
       this.enterprises = res.response;
     });
   }

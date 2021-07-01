@@ -26,13 +26,14 @@
  font-size: 20px;
  border: none;
 }
-
 .image img{
   width: 60%;
   height: 90%;
+}
+.image img{
+  border-radius: 15px;
   margin: 10px auto;
 }
-
 .card-clients{
   margin: 20px auto;
   border-radius: 10px;
@@ -69,6 +70,7 @@
 .image-enterprise img{
   width: 90%;
   height: 90%;
+  border-radius: 15px;
   margin: 20px auto;
 }
 .card-enterprises{
